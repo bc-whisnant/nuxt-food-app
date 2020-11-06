@@ -13,7 +13,7 @@ export const mutations = {
     state.fooddata = data
   }
 }
-
+// we get our data in actions and set it to state
 export const actions = {
   async getFoodData({ state, commit }) {
     if (state.fooddata.length) {
@@ -32,6 +32,7 @@ export const actions = {
         .then(response => response.json())
         .then(data => {
           console.log(data);
+          // committing our mutation here
           commit('updateFoodData', data)
         });
 
