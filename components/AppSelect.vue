@@ -4,8 +4,6 @@
 
     <select @change="$emit('change', $event.target.value)" :name="select" :id="select">
       <option value>-- Please select a {{ select }}</option>
-
-
       <option v-for="option in selectOptions" :key="option" :value="option">{{ option }}</option>
     </select>
   </div>
