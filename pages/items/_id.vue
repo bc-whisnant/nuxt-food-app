@@ -92,7 +92,9 @@ export default {
         addOns: this.itemAddons,
         combinedPrice: this.combinedPrice
       };
+      console.log(formOutput.item)
       this.cartSubmitted = true;
+      this.$store.commit('addToCart', formOutput)
     }
   },
   computed: {

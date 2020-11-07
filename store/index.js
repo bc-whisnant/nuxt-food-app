@@ -1,16 +1,28 @@
+import { v4 as uuidv4 } from "uuid";
+
+
 export const state = () => ({
-  fooddata: []
+  fooddata: [],
+  cart: []
 });
 
-// export const getters = {
-//   getterValue: state => {
-//     return state.value
-//   }
-// }
+export const getters = {
+  totalPrice: state => {
+    if (!state.cart.length) return 0
+    return state.cart.reduce((accumulator, next) => accumulator + +next.combinedPrice, 0)
+  },
+  cartCount: state => {
+    return state.cart.length
+  }
+}
 
 export const mutations = {
   updateFoodData: (state, data) => {
     state.fooddata = data
+  },
+  addToCart(state, formOutput) {
+    formOutput.id = uuidv4()
+    state.cart.push(formOutput)
   }
 }
 // we get our data in actions and set it to state
